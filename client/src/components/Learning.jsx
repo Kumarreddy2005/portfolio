@@ -5,13 +5,18 @@ const ITEMS = [
   { year: "2025", title: "Full Stack Web Development", org: "Zidio Development" },
   { year: "2024–2025", title: "Connect with Work Programme", org: "Magic Bus India Foundation" },
   { year: "July 2025", title: "AWS & DevOps Practices", org: "CodeOrigin.ai" },
-  { year: "Feb 2025", title: "Transforming Data Into Insights", org: "SWOC / Enterprises Tableau, Power BI, Excel" },
+  {
+    year: "Feb 2025",
+    title: "Transforming Data Into Insights",
+    org: "SWOC / Enterprises",
+    topics: ["Tableau", "Power BI", "Excel"],
+  },
 ];
 
 export default function Learning() {
   return (
     <section id="learning" className="content-section section-pad">
-      <Reveal>
+      <Reveal variant="mask">
         <p className="eyebrow mb-6">LEARNING</p>
         <h2 className="section-title">Always Learning.</h2>
       </Reveal>
@@ -26,7 +31,12 @@ export default function Learning() {
               <span className="text-xs tracking-wide text-fog sm:w-28">{it.year}</span>
               <span className="font-display text-lg text-bone">{it.title}</span>
             </div>
-            <span className="text-sm text-fog">{it.org}</span>
+            <div className="flex flex-wrap items-center gap-3">
+              {it.topics && (
+                <span className="text-xs text-goldSoft">{it.topics.join(" · ")}</span>
+              )}
+              <span className="text-sm text-fog">{it.org}</span>
+            </div>
           </div>
         ))}
       </Reveal>

@@ -45,8 +45,8 @@ export default function PyramidArchitecture() {
           <circle className="architecture-node" cx="240" cy="324" r="3" />
         </g>
         <g className="architecture-system">
-          <path className="system-path" d="M240 105V164M143 255L190 221M337 255L290 221M190 221H290V279H190V221Z" />
-          <path className="system-path system-path--branch" d="M190 249H149V293H105M290 249H331V293H375M240 279V319" />
+          <path pathLength="1" className="system-path" d="M240 105V164M143 255L190 221M337 255L290 221M190 221H290V279H190V221Z" />
+          <path pathLength="1" className="system-path system-path--branch" d="M190 249H149V293H105M290 249H331V293H375M240 279V319" />
           <circle className="architecture-node architecture-node--core" cx="240" cy="164" r="7" />
           <circle className="architecture-node architecture-node--core" cx="190" cy="221" r="4" />
           <circle className="architecture-node architecture-node--core" cx="290" cy="221" r="4" />

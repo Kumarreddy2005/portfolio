@@ -4,7 +4,7 @@ import PhilosophyArtwork from "./PhilosophyArtwork";
 export default function Philosophy() {
   return (
     <section id="about" className="content-section section-pad">
-      <Reveal className="philosophy-heading">
+      <Reveal className="philosophy-heading" variant="mask">
         <p className="eyebrow mb-6">PHILOSOPHY</p>
         <h2 className="section-title section-title--statement philosophy-title">
           I build software that turns complex problems into useful systems.
@@ -14,11 +14,9 @@ export default function Philosophy() {
         <div className="philosophy-bio max-w-xl">
           <p className="philosophy-role">Prompt Engineer &amp; Full-Stack Developer | MCA Student</p>
           <p className="mt-5 text-[15px] leading-relaxed text-fog">
-            MCA student and Prompt Engineer passionate about building modern web applications and
-            AI-powered solutions. I specialize in prompt engineering and full-stack development,
-            combining AI capabilities with practical software solutions to create user-friendly,
-            scalable digital products. I enjoy exploring emerging technologies, transforming
-            ideas into reality, and solving real-world problems through innovation and creativity.
+            My focus is the space between a promising idea and a dependable product: shaping
+            useful AI workflows, building the interfaces around them, and making complex systems
+            feel clear to the people who use them.
           </p>
         </div>
 

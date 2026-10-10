@@ -11,6 +11,7 @@ export default function PhilosophyArtwork() {
     let inView = false;
     let pageVisible = !document.hidden;
     let listeningForPointer = false;
+    let listeningForScroll = false;
     let width = 0;
     let height = 0;
 
@@ -27,6 +28,12 @@ export default function PhilosophyArtwork() {
       artwork.style.setProperty("--art-pointer-y", "0px");
     };
 
+    const onScroll = () => {
+      if (!inView || reducedMotion.matches) return;
+      const offset = artwork.getBoundingClientRect().top - window.innerHeight * 0.5;
+      artwork.style.setProperty("--art-parallax", `${Math.max(-80, Math.min(80, offset * -0.08))}px`);
+    };
+
     const syncArtwork = () => {
       const active = inView && pageVisible && !reducedMotion.matches;
       artwork.classList.toggle("is-visible", active);
@@ -39,6 +46,15 @@ export default function PhilosophyArtwork() {
         artwork.removeEventListener("pointerleave", onPointerLeave);
         listeningForPointer = false;
         onPointerLeave();
+      }
+      if (active && !listeningForScroll) {
+        window.addEventListener("scroll", onScroll, { passive: true });
+        listeningForScroll = true;
+        onScroll();
+      } else if (!active && listeningForScroll) {
+        window.removeEventListener("scroll", onScroll);
+        listeningForScroll = false;
+        artwork.style.setProperty("--art-parallax", "0px");
       }
     };
 
@@ -67,6 +83,7 @@ export default function PhilosophyArtwork() {
       reducedMotion.removeEventListener("change", syncArtwork);
       artwork.removeEventListener("pointermove", onPointerMove);
       artwork.removeEventListener("pointerleave", onPointerLeave);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
@@ -119,6 +136,11 @@ export default function PhilosophyArtwork() {
           <circle className="philosophy-art-node philosophy-art-node--output" cx="748" cy="164" r="4" />
           <circle className="philosophy-art-node philosophy-art-node--output" cx="820" cy="210" r="4" />
           <circle className="philosophy-art-node philosophy-art-node--output" cx="770" cy="256" r="4" />
+
+          <circle className="philosophy-art-stage philosophy-art-stage--one" cx="65" cy="103" r="3.5" />
+          <circle className="philosophy-art-stage philosophy-art-stage--two" cx="325" cy="103" r="3.5" />
+          <circle className="philosophy-art-stage philosophy-art-stage--three" cx="543" cy="103" r="3.5" />
+          <circle className="philosophy-art-stage philosophy-art-stage--four" cx="788" cy="103" r="3.5" />
 
           <path className="philosophy-art-line philosophy-art-dash" d="M335 210H410" />
           <path className="philosophy-art-line philosophy-art-dash philosophy-art-dash--second" d="M518 210H610" />

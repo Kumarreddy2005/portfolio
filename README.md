@@ -42,13 +42,18 @@ server console. To persist them to MongoDB:
 2. Add your connection string to `MONGO_URI` in `server/.env`
 3. Restart `npm run dev`
 
+For a production client hosted separately from the API, set
+`VITE_API_URL` to the deployed server origin (see `client/.env.example`).
+When that value is not set, or the API is unavailable, the contact form opens a
+prefilled email instead of showing a server error.
+
 ## Editing your content
 
-All copy (name, projects, experience, education, etc.) lives in the small
-components under `client/src/components/`. Update the arrays at the top of
-each file — `Projects.jsx`, `Experience.jsx`, `Education.jsx`,
-`Learning.jsx` — to reflect your own details, and swap the email/phone/social
-links in `Contact.jsx`.
+Social, repository, resume, media-preview, and contact links live in
+`client/src/data/site.js`. Replace the clearly marked `TODO_` values as they
+become available. Project screenshots can be placed under
+`client/public/projects/` and referenced from the same config. Other portfolio
+copy remains in the small section data arrays under `client/src/components/`.
 
 ## Build for production
 

@@ -21,7 +21,8 @@ export default function ParticleMesh() {
     const highlightContext = highlightCanvas.getContext("2d");
     if (highlightContext) {
       const highlightGradient = highlightContext.createRadialGradient(64, 64, 0, 64, 64, 64);
-      highlightGradient.addColorStop(0, `rgba(${HIGHLIGHT},0.12)`);
+      highlightGradient.addColorStop(0, `rgba(${HIGHLIGHT},0.42)`);
+      highlightGradient.addColorStop(0.34, `rgba(${GOLD},0.24)`);
       highlightGradient.addColorStop(1, `rgba(${HIGHLIGHT},0)`);
       highlightContext.fillStyle = highlightGradient;
       highlightContext.fillRect(0, 0, 128, 128);
@@ -83,10 +84,10 @@ export default function ParticleMesh() {
 
       lineGradient = context.createLinearGradient(0, 0, width, 0);
       lineGradient.addColorStop(0, `rgba(${GOLD},0)`);
-      lineGradient.addColorStop(0.16, `rgba(${GOLD},0.03)`);
-      lineGradient.addColorStop(0.4, `rgba(${GOLD},0.2)`);
-      lineGradient.addColorStop(0.68, `rgba(${GOLD},0.27)`);
-      lineGradient.addColorStop(0.88, `rgba(${GOLD},0.12)`);
+      lineGradient.addColorStop(0.16, `rgba(${GOLD},0.08)`);
+      lineGradient.addColorStop(0.4, `rgba(${GOLD},0.36)`);
+      lineGradient.addColorStop(0.68, `rgba(${GOLD},0.44)`);
+      lineGradient.addColorStop(0.88, `rgba(${GOLD},0.2)`);
       lineGradient.addColorStop(1, `rgba(${GOLD},0)`);
     };
 
@@ -174,7 +175,7 @@ export default function ParticleMesh() {
       }
 
       context.strokeStyle = lineGradient;
-      context.lineWidth = 0.65;
+      context.lineWidth = 0.9;
       context.stroke();
 
       context.beginPath();
@@ -186,7 +187,7 @@ export default function ParticleMesh() {
           context.arc(xPositions[index], yPositions[index], radius, 0, Math.PI * 2);
         }
       }
-      context.fillStyle = `rgba(${GOLD},0.48)`;
+      context.fillStyle = `rgba(${GOLD},0.72)`;
       context.fill();
 
       context.beginPath();
@@ -200,7 +201,7 @@ export default function ParticleMesh() {
           }
         }
       }
-      context.fillStyle = `rgba(${HIGHLIGHT},0.34)`;
+      context.fillStyle = `rgba(${HIGHLIGHT},0.62)`;
       context.fill();
 
       if (
@@ -211,7 +212,7 @@ export default function ParticleMesh() {
         pointer.y >= 0 &&
         pointer.y <= height
       ) {
-        const radius = mediumScreen.matches ? 125 : 155;
+        const radius = mediumScreen.matches ? 150 : 190;
         context.drawImage(
           highlightCanvas,
           pointer.x - radius,
